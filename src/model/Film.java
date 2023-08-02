@@ -1,6 +1,8 @@
 package model;
 
-public class Film extends Title {
+import utils.Sortable;
+
+public class Film extends Title implements Sortable {
 
     private String director;
 
@@ -10,5 +12,10 @@ public class Film extends Title {
 
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    @Override
+    public int getSortable() {
+        return (int)averageRating() / 2;
     }
 }
