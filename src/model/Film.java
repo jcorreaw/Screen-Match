@@ -3,8 +3,11 @@ package model;
 import utils.Sortable;
 
 public class Film extends Title implements Sortable {
-
     private String director;
+
+    public Film(String name, int releaseYear) {
+        super(name, releaseYear);
+    }
 
     public String getDirector() {
         return director;
