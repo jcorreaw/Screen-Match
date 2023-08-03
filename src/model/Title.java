@@ -1,6 +1,6 @@
 package model;
 
-public class Title {
+public class Title implements Comparable<Title> {
     private String name;
     private int releaseYear;
     private boolean includedInThePlan;
@@ -65,5 +65,10 @@ public class Title {
 
     public double averageRating(){
         return sumOfRatings / totalRatings;
+    }
+
+    @Override
+    public int compareTo(Title title) {
+        return this.getName().compareTo(title.getName());
     }
 }

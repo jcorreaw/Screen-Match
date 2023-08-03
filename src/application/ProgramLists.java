@@ -5,6 +5,9 @@ import model.Series;
 import model.Title;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ProgramLists {
     public static void main(String[] args) {
@@ -29,5 +32,22 @@ public class ProgramLists {
             }
         }
 
+        ArrayList<String> searchByArtist = new ArrayList<>();
+        searchByArtist.add("Adam Sandler");
+        searchByArtist.add("Paulo");
+        searchByArtist.add("Joao");
+        System.out.println(searchByArtist);
+
+        Collections.sort(searchByArtist);
+        System.out.println("Depois de ordenar: ");
+        System.out.println(searchByArtist);
+
+        System.out.println("Lista de titulos ordenados: ");
+        Collections.sort(list);
+        System.out.println(list);
+
+        list.sort(Comparator.comparing(Title::getReleaseYear));
+        System.out.println("Ordenando por ano: ");
+        System.out.println(list);
     }
 }
