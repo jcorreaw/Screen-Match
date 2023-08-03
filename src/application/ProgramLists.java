@@ -4,10 +4,7 @@ import model.Film;
 import model.Series;
 import model.Title;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class ProgramLists {
     public static void main(String[] args) {
@@ -19,7 +16,7 @@ public class ProgramLists {
         filmPaulo.evaluate(10);
         Series lost = new Series("Lost", 2000);
 
-        ArrayList<Title> list = new ArrayList<>();
+        List<Title> list = new LinkedList<>();
         list.add(filmPaulo);
         list.add(myFilm);
         list.add(myFilm1);
