@@ -51,7 +51,6 @@ public class Program {
         filmPaulo.evaluate(10);
 
         ArrayList<Film> listFilms = new ArrayList<>();
-
         listFilms.add(filmPaulo);
         listFilms.add(myFilm);
         listFilms.add(myFilm1);
