@@ -6,6 +6,8 @@ import utils.TimeCalculator;
 import model.Film;
 import model.Series;
 
+import java.util.ArrayList;
+
 public class Program {
     public static void main(String[] args) {
         Film myFilm = new Film();
@@ -49,5 +51,23 @@ public class Program {
         episode.setSeries(lost);
         episode.setTotalViews(300);
         filter.filters(episode);
+
+        var filmPaulo = new Film();
+        filmPaulo.setDurationInMinutes(200);
+        filmPaulo.setName("Dogville");
+        filmPaulo.setReleaseYear(2003);
+        filmPaulo.evaluate(10);
+
+        ArrayList<Film> listFilms = new ArrayList<>();
+
+        listFilms.add(filmPaulo);
+        listFilms.add(myFilm);
+        listFilms.add(myFilm1);
+
+        System.out.println("Tamanho da lista: " + listFilms.size());
+        System.out.println("Primeiro filme: " + listFilms.get(0).getName());
+        System.out.println(listFilms);
+        System.out.println("toString do filme: " + listFilms.get(0).toString());
+
     }
 }
