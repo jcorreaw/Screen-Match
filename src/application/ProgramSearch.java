@@ -22,19 +22,26 @@ public class ProgramSearch {
 
         String address = "https://www.omdbapi.com/?t=" + search + "&apikey=269d7262";
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(address)).build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(address)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String json = response.body();
-        System.out.println(response.body());
+            String json = response.body();
+            System.out.println(response.body());
 
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-        TitleOmdb myTitleOmdb = gson.fromJson(json, TitleOmdb.class);
-        System.out.println(myTitleOmdb);
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            TitleOmdb myTitleOmdb = gson.fromJson(json, TitleOmdb.class);
+            System.out.println(myTitleOmdb);
 
-        Title myTitle = new Title(myTitleOmdb);
-        System.out.println("Título já convertido: " + myTitle);
+
+            Title myTitle = new Title(myTitleOmdb);
+            System.out.println("Título já convertido: " + myTitle);
+        } catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Algum erro de argumento na busca, verifique o endereco.");
+        }
 
         sc.close();
     }
