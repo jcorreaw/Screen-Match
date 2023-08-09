@@ -3,6 +3,7 @@ package application;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import exception.YearConversionErrorException;
 import model.Title;
 import model.TitleOmdb;
 
@@ -20,7 +21,7 @@ public class ProgramSearch {
         System.out.print("Digite um filme para buscar: ");
         var search = sc.nextLine();
 
-        String address = "https://www.omdbapi.com/?t=" + search + "&apikey=269d7262";
+        String address = "https://www.omdbapi.com/?t=" + search.replace(" ", "+") + "&apikey=269d7262";
 
         try {
             HttpClient client = HttpClient.newHttpClient();
@@ -41,6 +42,8 @@ public class ProgramSearch {
             System.out.println("Aconteceu um erro: " + e.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println("Algum erro de argumento na busca, verifique o endereco.");
+        } catch (YearConversionErrorException e) {
+            System.out.println(e.getMsg());
         }
 
         sc.close();
