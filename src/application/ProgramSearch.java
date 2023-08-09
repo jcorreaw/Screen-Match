@@ -1,7 +1,10 @@
 package application;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.Title;
+import model.TitleOmdb;
 
 import java.io.IOException;
 import java.net.URI;
@@ -26,9 +29,12 @@ public class ProgramSearch {
         String json = response.body();
         System.out.println(response.body());
 
-        Gson gson = new Gson();
-        Title myTitle = gson.fromJson(json, Title.class);
-        System.out.println(myTitle);
+        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+        TitleOmdb myTitleOmdb = gson.fromJson(json, TitleOmdb.class);
+        System.out.println(myTitleOmdb);
+
+        Title myTitle = new Title(myTitleOmdb);
+        System.out.println("Título já convertido: " + myTitle);
 
         sc.close();
     }
